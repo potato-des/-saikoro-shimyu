@@ -1,0 +1,90 @@
+<html>
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>サイコロシュミレート</title>
+  <link rel="icon" href="icon.png">
+</head>
+<body>
+    <div style="font-size: 50px; color: black; border:2px solid black; background-color: yellow; top: 45%; left: 50%; position: absolute; cursor: pointer;" id="button1">サイコロを振る</div>
+    <h1 style="font-size:80px;color:rgb(255, 119, 0);text-align: center;">サイコロシュミレート</h1>
+    <h1 id="dice1">一の目</h1>
+    <h1 id="dice2">二の目</h1>
+    <h1 id="dice3">三の目</h1>
+    <h1 id="dice4">四の目</h1>
+    <h1 id="dice5">五の目</h1>
+    <h1 id="dice6">六の目</h1>
+    <h2 style="color: black; text-align:right;">potato-desの他のツールやゲームは<a style="font-size:30px;"  href="https://potato-des.github.io/potato-des-/" target="_blank">こちら</a>から</h2>
+</body>
+<script>
+
+const b1 = document.getElementById("button1");
+
+const h1 = document.getElementById("dice1");
+const h2 = document.getElementById("dice2");
+const h3 = document.getElementById("dice3");
+const h4 = document.getElementById("dice4");
+const h5 = document.getElementById("dice5");
+const h6 = document.getElementById("dice6");
+
+let dice1 = 0;
+let dice2 = 0; 
+let dice3 = 0;
+let dice4 = 0;
+let dice5 = 0;
+let dice6 = 0;
+let num = 0;
+
+const dice = (num, count) => {return ((count / num) * 100).toFixed(2);}
+
+
+b1.onclick = function() {
+
+num = 0;
+
+num = Number(prompt("サイコロを振る回数を入力してください。"));
+
+dice1 = 0;
+dice2 = 0;
+dice3 = 0;
+dice4 = 0;
+dice5 = 0;
+dice6 = 0;
+
+
+if (num && !isNaN(num)&& num > 0&&num<=100000000) {
+     for (let i = 0; i < num; i++) {
+        let dice = Math.floor(Math.random() * 6) + 1;
+        if(dice === 1) {
+            dice1++;
+        } else if(dice === 2) {
+            dice2++;
+        } else if(dice === 3) {
+            dice3++;
+        } else if(dice === 4) {
+            dice4++;
+        } else if(dice === 5) {
+            dice5++;
+        } else if(dice === 6) {
+            dice6++;
+        }
+  }
+  h1.textContent = `一の目: ${dice1}回 : 確率${dice(num, dice1)}%`;
+  h2.textContent = `二の目: ${dice2}回 : 確率${dice(num, dice2)}%`;
+  h3.textContent = `三の目: ${dice3}回 : 確率${dice(num, dice3)}%`;
+  h4.textContent = `四の目: ${dice4}回 : 確率${dice(num, dice4)}%`;
+  h5.textContent = `五の目: ${dice5}回 : 確率${dice(num, dice5)}%`;
+  h6.textContent = `六の目: ${dice6}回 : 確率${dice(num, dice6)}%`;
+
+}
+else if(num && !isNaN(num)&& num > 0&&num>100000000) {
+  alert("回数が多すぎます。100000000以下の半角数字を入力してください。");
+}
+ else {
+  alert("無効な入力です。半角数字を入力してください。");
+}
+
+}
+
+</script>
+</html>
